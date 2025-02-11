@@ -7,9 +7,12 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
+  encrypt: ^5.0.3
   flutter:
     sdk: flutter
   flutter_kronos_plus: ^1.0.0+1
+  get_it: ^8.0.3
+  logger: ^2.5.0
   ulid4d: ^2.0.0
 
 dev_dependencies:

@@ -39,3 +39,28 @@ final messageId = UniqueIdentityManager().messageId;
 ```dart
 final notificationId = UniqueIdentityManager().generateNotificationId(messageUlid);
 ```
+
+## Injector :  Dependency Management
+The `Injector` class is a central component for managing dependencies and providing 
+instances of classes within your application. It utilizes the `GetIt` package for dependency injection and service location.
+
+### Initialize Modules
+Initialize the modules and register dependencies at the start of your application (e.g., in your `main()` function):
+```dart
+void main() { 
+  // Initialize the injector with the necessary arguments 
+  Injector.initModules(ArgInjector(aesSecretKey: 'your_aes_secret_key')) ; 
+  runApp(MyApp()); 
+}
+```
+
+### Custom Dependency Injection Module
+Custom dependency injection module that extends the base `Injector` class. It's designed to register specific dependencies within your application using the `GetIt` package.
+```dart
+class AppInjector extends Injector {
+  @override
+  void init(GetIt instance) {
+    instance.registerSingleton(Dependency());
+  }
+}
+```
