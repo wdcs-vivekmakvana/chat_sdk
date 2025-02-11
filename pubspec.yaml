@@ -21,9 +21,11 @@ dependencies:
 dev_dependencies:
   build_runner: ^2.4.14
   drift_dev: ^2.25.1
+  drift_local_storage_inspector: ^0.7.0
   flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
+  storage_inspector: ^0.4.0
   very_good_analysis: ^7.0.0
 
 # For information on the generic Dart part of this file, see the
