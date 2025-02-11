@@ -1,4 +1,5 @@
 import 'package:chat_sdk/chat_sdk.dart';
+import 'package:chat_sdk/database/data_base.dart';
 import 'package:flutter/foundation.dart' show immutable;
 import 'package:get_it/get_it.dart';
 
@@ -24,7 +25,8 @@ abstract class Injector {
       ..registerSingleton(EncryptionManager(aesSecretKey: arg.aesSecretKey))
       ..registerSingleton(ServerDateTime.instance)
       ..registerSingleton(UniqueIdentityManager())
-      ..registerSingleton(SocketManager(arg: arg.argSocketManager));
+      ..registerSingleton(SocketManager(arg: arg.argSocketManager))
+      ..registerLazySingleton(AppDatabase.new);
   }
 
   /// Initializes the injector with the provided instance of GetIt.
