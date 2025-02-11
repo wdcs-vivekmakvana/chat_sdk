@@ -25,3 +25,17 @@ To obtain the accurate server timestamp (in UTC), use the `utcNow()` method:
 ```dart
 final dateStamp = await ServerDateTime.instance().utcNow();
 ```
+------
+## Unique Identity Manager
+
+This library provides a `UniqueIdentityManager` class for generating unique identifiers (IDs) using ULIDs (Universally Unique Lexicographically Sortable Identifiers). 
+It leverages the `ulid4d` package for efficient ULID generation and manipulation.
+
+### Retrieving the Message Id
+```dart
+final messageId = UniqueIdentityManager().messageId;
+```
+### To get Notification Id from Message id
+```dart
+final notificationId = UniqueIdentityManager().generateNotificationId(messageUlid);
+```

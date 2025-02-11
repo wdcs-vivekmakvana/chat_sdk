@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_kronos_plus: ^1.0.0+1
+  ulid4d: ^2.0.0
 
 dev_dependencies:
   flutter_lints: ^5.0.0
