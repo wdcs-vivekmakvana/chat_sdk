@@ -14,6 +14,7 @@ dependencies:
   get_it: ^8.0.3
   logger: ^2.5.0
   ulid4d: ^2.0.0
+  web_socket_client: ^0.1.5
 
 dev_dependencies:
   flutter_lints: ^5.0.0

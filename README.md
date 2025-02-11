@@ -65,3 +65,41 @@ final messageId = Injector.instance<UniqueIdentityManager>().messageId;
 ```dart
 final notificationId = Injector.instance<UniqueIdentityManager>().generateNotificationId(messageUlid);
 ```
+
+## Socket Manager : WebSocket Connection Management
+
+The `SocketManager` class is a crucial component for managing WebSocket 
+connections in chat applications. It handles establishing, maintaining, 
+and closing connections, as well as sending and receiving messages. 
+This class is designed to be used with the `web_socket_client` package for
+WebSocket communication.
+
+SocketManager is already register in Injector, User need to pass `ArgSocketManager`.
+
+### Send Messages
+```dart
+Injector.instance<SocketManageer>().sendMessage(MESSAGE);
+```
+
+### Custom Action & Event Handler
+For handle action & event,pass `actionHandlers` & `eventHandler` in Argument
+```dart
+ArgSocketManager.client(
+  socket: ...,
+    actionHandlers: {
+        'directMessage' : (event){
+            MessagePayload.fromJson(event);
+        }
+    },
+    eventHandler: (message) {
+        if (message is MessagePayload) {
+          'Received DM OR Community OR acknowledge: $message'.logI;
+        }
+    },
+);
+```
+
+### Dispose of the Connection
+```dart
+Injector.instance<SocketManageer>().socketManagerDispose();
+```
