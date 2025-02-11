@@ -1,39 +1,27 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
+## Server Date Time
+This application requires accurate server time for displaying message creation times. 
+To achieve this, we utilize the `flutter_kronos_plus` plugin to synchronize with a
+Network Time Protocol (NTP) server.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
+## Implementation Details
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
+### 1. Android Permissions
+Ensure you have the `INTERNET` permission declared in your `AndroidManifest.xml` file:
 ```dart
-const like = 'sample';
+<uses-permission android:name="android.permission.INTERNET"/>
 ```
 
-## Additional information
+### 2. Initialization
+To ensure accurate time synchronization, initialize the `ServerDateTime` 
+instance at the start of your application. Add the following line within your `runApp()` function:
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+```dart
+ServerDateTime.instance().initialize();
+```
+
+### 3. Retrieving the Server Timestamp
+To obtain the accurate server timestamp (in UTC), use the `utcNow()` method:
+```dart
+final dateStamp = await ServerDateTime.instance().utcNow();
+```
